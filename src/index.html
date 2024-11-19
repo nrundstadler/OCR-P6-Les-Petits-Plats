@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="bg-neutral-200">
+    <header class="bg-neutral-400 bg-[url('../assets/images/header-bg.jpg')] bg-cover bg-center px-[3vw] pt-14">
+      <img class="max-w-52" src="assets/images/logo.svg" alt="Logo Les Petits Plats" />
+
+      <div class="flex h-[50vh] min-h-72 flex-col items-center justify-center gap-11">
+        <h1
+          class="0 max-w-screen-md text-balance text-center font-display text-3xl uppercase text-amber-300 sm:text-5xl sm:leading-tight"
+        >
+          Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses
+        </h1>
+        <div
+          class="flex w-full max-w-screen-lg rounded-lg bg-white p-2 text-neutral-500 focus-within:ring-2 focus-within:ring-amber-300"
+        >
+          <label class="sr-only" for="recipes-search">Rechercher une recette</label>
+          <input
+            class="flex-1 px-6 outline-none"
+            type="search"
+            id="recipes-search"
+            placeholder="Rechercher une recette, un ingrédient, ..."
+          />
+          <button
+            class="h-14 w-14 rounded-lg bg-neutral-900 text-white outline-none transition hover:bg-amber-300 hover:text-neutral-900 focus-visible:bg-amber-300"
+            aria-label="Lancer la recherche"
+          >
+            <svg
+              class="m-auto"
+              width="28"
+              height="29"
+              viewBox="0 0 28 29"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="10" cy="10.4219" r="9.5" stroke="currentColor" />
+              <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <aside class="m-auto my-6 flex max-w-screen-xl px-4 md:items-center xl:px-0">
+        <div class="flex flex-wrap gap-x-8 gap-y-4">
+          <div class="relative min-w-48">
+            <button
+              class="flex w-full items-center justify-between rounded-lg bg-white p-3"
+              aria-expanded="false"
+              aria-label="Filtrer les recettes par ingrédients"
+            >
+              <span class="pointer-events-none font-medium" aria-hidden="true">Ingrédients</span>
+              <svg
+                class="pointer-events-none text-neutral-900"
+                width="15"
+                height="8"
+                viewBox="0 0 15 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="relative min-w-48">
+            <button
+              class="flex w-full items-center justify-between rounded-lg bg-white p-3"
+              aria-expanded="false"
+              aria-label="Filtrer les recettes par appareils"
+            >
+              <span class="pointer-events-none font-medium" aria-hidden="true">Appareils</span>
+              <svg
+                class="pointer-events-none text-neutral-900"
+                width="15"
+                height="8"
+                viewBox="0 0 15 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="relative min-w-48">
+            <button
+              class="flex w-full items-center justify-between rounded-lg bg-white p-3"
+              aria-expanded="false"
+              aria-label="Filtrer les recettes par ustensiles"
+            >
+              <span class="pointer-events-none font-medium" aria-hidden="true">Ustensiles</span>
+              <svg
+                class="pointer-events-none text-neutral-900"
+                width="15"
+                height="8"
+                viewBox="0 0 15 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="min-w-32 flex-grow text-right font-display text-xl">50 recettes</div>
+      </aside>
+
+      <section
+        class="container m-auto my-12 grid max-w-screen-xl gap-8 px-4 md:grid-cols-2 lg:grid-cols-3 xl:gap-16 xl:px-0"
+        aria-label="Résultat de recherche"
+      >
+        <article class="relative rounded-lg bg-white text-sm shadow-lg" aria-label="Recette : Limonade de Coco">
+          <img
+            class="h-[250px] w-full rounded-t-lg object-cover"
+            src="assets/images/header-bg.jpg"
+            alt="Image de la recette Limonade de Coco"
+          />
+          <div class="mx-4 px-5 py-8">
+            <h2 class="font-display text-lg">Limonade de Coco</h2>
+            <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Recette</h3>
+            <p class="text-sm">
+              Mettre les glaçons à votre goût dans le blender, Ajouter le lait la crème de coco, le jus de 2 citrons et
+              le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.
+            </p>
+            <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Ingrédients</h3>
+            <ul class="grid grid-cols-2 gap-4">
+              <li class="flex flex-col">
+                <span>Lait de coco</span>
+                <span class="text-neutral-500">400 ml</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Jus de citron</span>
+                <span class="text-neutral-500">2 </span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Crème de coco</span>
+                <span class="text-neutral-500">2 cuillères à soupe</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Sucre</span>
+                <span class="text-neutral-500">30 grammes</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Glaçons</span>
+                <span class="text-neutral-500">2</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article class="relative rounded-lg bg-white text-sm shadow-lg" aria-label="Recette : Limonade de Coco">
+          <img
+            class="h-[250px] w-full rounded-t-lg object-cover"
+            src="assets/images/header-bg.jpg"
+            alt="Image de la recette Limonade de Coco"
+          />
+          <div class="mx-4 px-5 py-8">
+            <h2 class="font-display text-lg">Limonade de Coco</h2>
+            <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Recette</h3>
+            <p class="text-sm">
+              Mettre les glaçons à votre goût dans le blender, Ajouter le lait la crème de coco, le jus de 2 citrons et
+              le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.
+            </p>
+            <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Ingrédients</h3>
+            <ul class="grid grid-cols-2 gap-4">
+              <li class="flex flex-col">
+                <span>Lait de coco</span>
+                <span class="text-neutral-500">400 ml</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Jus de citron</span>
+                <span class="text-neutral-500">2 </span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Crème de coco</span>
+                <span class="text-neutral-500">2 cuillères à soupe</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Sucre</span>
+                <span class="text-neutral-500">30 grammes</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Glaçons</span>
+                <span class="text-neutral-500">2</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article class="relative rounded-lg bg-white text-sm shadow-lg" aria-label="Recette : Limonade de Coco">
+          <img
+            class="h-[250px] w-full rounded-t-lg object-cover"
+            src="assets/images/header-bg.jpg"
+            alt="Image de la recette Limonade de Coco"
+          />
+          <div class="mx-4 px-5 py-8">
+            <h2 class="font-display text-lg">Limonade de Coco</h2>
+            <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Recette</h3>
+            <p class="text-sm">
+              Mettre les glaçons à votre goût dans le blender, Ajouter le lait la crème de coco, le jus de 2 citrons et
+              le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.
+            </p>
+            <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Ingrédients</h3>
+            <ul class="grid grid-cols-2 gap-4">
+              <li class="flex flex-col">
+                <span>Lait de coco</span>
+                <span class="text-neutral-500">400 ml</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Jus de citron</span>
+                <span class="text-neutral-500">2 </span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Crème de coco</span>
+                <span class="text-neutral-500">2 cuillères à soupe</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Sucre</span>
+                <span class="text-neutral-500">30 grammes</span>
+              </li>
+
+              <li class="flex flex-col">
+                <span>Glaçons</span>
+                <span class="text-neutral-500">2</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
