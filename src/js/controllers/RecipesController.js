@@ -20,14 +20,34 @@ export class RecipesController {
     if (query.length < 3) {
       this.filteredRecipes = this.recipes;
     } else {
-      this.filteredRecipes = this.recipes.filter((recipe) => {
-        // Check if any of the criteria match, return true immediately when found
-        return (
-          recipe.name.toLowerCase().includes(query) ||
-          recipe.description.toLowerCase().includes(query) ||
-          recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(query))
-        );
-      });
+      // Create an empty array to contain filtered recipes
+      this.filteredRecipes = [];
+
+      // Loop through each recipe
+      for (let i = 0; i < this.recipes.length; i++) {
+        const recipe = this.recipes[i];
+
+        // Check if the recipe matches the query
+        let matchFound = false;
+
+        // Check if the name or description matches
+        if (recipe.name.toLowerCase().includes(query) || recipe.description.toLowerCase().includes(query)) {
+          matchFound = true;
+        } else {
+          // Check if any ingredient matches the query
+          for (let j = 0; j < recipe.ingredients.length; j++) {
+            if (recipe.ingredients[j].ingredient.toLowerCase().includes(query)) {
+              matchFound = true;
+              break; // Exit the loop early if a match is found
+            }
+          }
+        }
+
+        // If a match is found, add the recipe to the filtered list
+        if (matchFound) {
+          this.filteredRecipes.push(recipe);
+        }
+      }
     }
 
     this.showRecipes(); // Show filtered recipes
