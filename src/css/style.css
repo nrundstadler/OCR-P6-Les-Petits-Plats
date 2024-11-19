@@ -608,20 +608,20 @@ html {
   pointer-events: none;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
+.right-4 {
+  right: 1rem;
 }
 
-.top-0 {
-  top: 0px;
-}
-
-.z-10 {
-  z-index: 10;
+.top-4 {
+  top: 1rem;
 }
 
 .m-auto {
@@ -633,24 +633,9 @@ html {
   margin-right: 1rem;
 }
 
-.my-16 {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
-
-.my-14 {
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
-}
-
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;
-}
-
-.my-5 {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
 }
 
 .my-6 {
@@ -664,6 +649,13 @@ html {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.line-clamp-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 }
 
 .flex {
@@ -698,45 +690,12 @@ html {
   width: 100%;
 }
 
-.min-w-52 {
-  min-width: 13rem;
+.min-w-32 {
+  min-width: 8rem;
 }
 
 .min-w-48 {
   min-width: 12rem;
-}
-
-.min-w-min {
-  min-width: -moz-min-content;
-  min-width: min-content;
-}
-
-.min-w-0 {
-  min-width: 0px;
-}
-
-.min-w-7 {
-  min-width: 1.75rem;
-}
-
-.min-w-8 {
-  min-width: 2rem;
-}
-
-.min-w-10 {
-  min-width: 2.5rem;
-}
-
-.min-w-14 {
-  min-width: 3.5rem;
-}
-
-.min-w-28 {
-  min-width: 7rem;
-}
-
-.min-w-32 {
-  min-width: 8rem;
 }
 
 .max-w-52 {
@@ -759,16 +718,8 @@ html {
   flex: 1 1 0%;
 }
 
-.flex-shrink {
-  flex-shrink: 1;
-}
-
 .flex-grow {
   flex-grow: 1;
-}
-
-.flex-grow-0 {
-  flex-grow: 0;
 }
 
 .grid-cols-2 {
@@ -795,10 +746,6 @@ html {
   justify-content: space-between;
 }
 
-.justify-items-center {
-  justify-items: center;
-}
-
 .gap-11 {
   gap: 2.75rem;
 }
@@ -820,16 +767,16 @@ html {
   row-gap: 1rem;
 }
 
-.justify-self-center {
-  justify-self: center;
-}
-
 .text-balance {
   text-wrap: balance;
 }
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-t-lg {
@@ -857,9 +804,9 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
-.bg-neutral-300 {
+.bg-amber-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(212 212 212 / var(--tw-bg-opacity, 1));
+  background-color: rgb(252 211 77 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[url\(\'\.\.\/assets\/images\/header-bg\.jpg\'\)\] {
@@ -881,14 +828,6 @@ html {
 
 .p-2 {
   padding: 0.5rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .p-3 {
@@ -920,6 +859,11 @@ html {
   padding-bottom: 2rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .pt-14 {
   padding-top: 3.5rem;
 }
@@ -930,10 +874,6 @@ html {
 
 .text-right {
   text-align: right;
-}
-
-.align-middle {
-  vertical-align: middle;
 }
 
 .font-display {
@@ -955,14 +895,14 @@ html {
   line-height: 1.25rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold {
@@ -991,14 +931,14 @@ html {
   color: rgb(115 115 115 / var(--tw-text-opacity, 1));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
 .text-neutral-900 {
   --tw-text-opacity: 1;
   color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .shadow-lg {
@@ -1041,27 +981,12 @@ html {
   color: rgb(23 23 23 / var(--tw-text-opacity, 1));
 }
 
-.focus\:outline-none:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
 .focus-visible\:bg-amber-300:focus-visible {
   --tw-bg-opacity: 1;
   background-color: rgb(252 211 77 / var(--tw-bg-opacity, 1));
 }
 
-.focus-visible\:ring:focus-visible {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
 @media (min-width: 640px) {
-  .sm\:items-center {
-    align-items: center;
-  }
-
   .sm\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -1085,10 +1010,6 @@ html {
 @media (min-width: 1024px) {
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .lg\:items-center {
-    align-items: center;
   }
 }
 
