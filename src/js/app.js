@@ -1,17 +1,14 @@
 import { recipes as recipesData } from "./data/recipes.js";
+import { RecipesModel } from "./models/RecipesModel.js";
+import { RecipesView } from "./views/RecipesView.js";
 import { RecipesController } from "./controllers/RecipesController.js";
 
 function initApp() {
-  const recipesController = new RecipesController(recipesData);
+  const model = new RecipesModel(recipesData); // Create the model
+  const view = new RecipesView(); // Create the view
+  const controller = new RecipesController(model, view); // Create the controller
 
-  // Instant search (triggered as soon as the user types)
-  const searchInput = document.getElementById("recipes-search");
-  searchInput.addEventListener("input", (e) => {
-    recipesController.searchRecipes(e.target.value);
-  });
-
-  // Display all recipes by default
-  recipesController.showRecipes();
+  controller.init(); // Initialize the app
 }
 
 initApp();
