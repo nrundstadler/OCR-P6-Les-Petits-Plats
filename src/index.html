@@ -53,67 +53,156 @@
       </div>
     </header>
     <main>
-      <aside class="m-auto my-6 flex max-w-screen-xl px-4 md:items-center xl:px-0">
-        <div class="flex flex-wrap gap-x-8 gap-y-4">
-          <div class="relative min-w-48">
-            <button
-              class="flex w-full items-center justify-between rounded-lg bg-white p-3"
-              aria-expanded="false"
-              aria-label="Filtrer les recettes par ingrédients"
-            >
-              <span class="pointer-events-none font-medium" aria-hidden="true">Ingrédients</span>
-              <svg
-                class="pointer-events-none text-neutral-900"
-                width="15"
-                height="8"
-                viewBox="0 0 15 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+      <aside>
+        <div class="m-auto my-6 flex max-w-screen-xl px-4 md:items-center xl:px-0">
+          <div class="flex flex-wrap gap-x-8 gap-y-4">
+            <div class="relative min-w-48" data-menu="ingredients">
+              <button
+                class="flex w-full items-center justify-between rounded-lg bg-white p-3 outline-none focus-visible:shadow-[inset_0_0_0_2px_theme('colors.amber.300')]"
+                aria-expanded="false"
+                aria-label="Filtrer les recettes par ingrédients"
               >
-                <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
-          <div class="relative min-w-48">
-            <button
-              class="flex w-full items-center justify-between rounded-lg bg-white p-3"
-              aria-expanded="false"
-              aria-label="Filtrer les recettes par appareils"
-            >
-              <span class="pointer-events-none font-medium" aria-hidden="true">Appareils</span>
-              <svg
-                class="pointer-events-none text-neutral-900"
-                width="15"
-                height="8"
-                viewBox="0 0 15 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                <span class="pointer-events-none font-medium" aria-hidden="true">Ingrédients</span>
+                <svg
+                  class="pointer-events-none text-neutral-900"
+                  width="15"
+                  height="8"
+                  viewBox="0 0 15 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full z-10 max-h-60 w-full overflow-auto rounded-b-lg bg-white" hidden>
+                <div
+                  class="ring-accent mx-4 my-1 flex items-center border border-neutral-400 px-2 py-1 focus-within:ring-2 focus-within:ring-amber-300"
+                >
+                  <label class="sr-only" for="ingredient_search">Rechercher un ingrédient</label>
+                  <input id="ingredient_search" type="search" class="w-full outline-none" />
+                  <svg
+                    class="pointer-events-none text-neutral-900"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <circle cx="5" cy="5" r="4.75" stroke="currentColor" stroke-width="0.5" />
+                    <line
+                      x1="9.17678"
+                      y1="9.32322"
+                      x2="13.6768"
+                      y2="13.8232"
+                      stroke="currentColor"
+                      stroke-width="0.5"
+                    />
+                  </svg>
+                </div>
+                <ul id="ingredients-list"></ul>
+              </div>
+            </div>
+            <div class="relative min-w-48" data-menu="appliances">
+              <button
+                class="flex w-full items-center justify-between rounded-lg bg-white p-3 outline-none focus-visible:shadow-[inset_0_0_0_2px_theme('colors.amber.300')]"
+                aria-expanded="false"
+                aria-label="Filtrer les recettes par appareils"
               >
-                <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
-          <div class="relative min-w-48">
-            <button
-              class="flex w-full items-center justify-between rounded-lg bg-white p-3"
-              aria-expanded="false"
-              aria-label="Filtrer les recettes par ustensiles"
-            >
-              <span class="pointer-events-none font-medium" aria-hidden="true">Ustensiles</span>
-              <svg
-                class="pointer-events-none text-neutral-900"
-                width="15"
-                height="8"
-                viewBox="0 0 15 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                <span class="pointer-events-none font-medium" aria-hidden="true">Appareils</span>
+                <svg
+                  class="pointer-events-none text-neutral-900"
+                  width="15"
+                  height="8"
+                  viewBox="0 0 15 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full z-10 max-h-60 w-full overflow-auto rounded-b-lg bg-white" hidden>
+                <div
+                  class="ring-accent mx-4 my-1 flex items-center border border-neutral-400 px-2 py-1 focus-within:ring-2 focus-within:ring-amber-300"
+                >
+                  <label class="sr-only" for="appliance_search">Rechercher un appareil</label>
+                  <input id="appliance_search" type="search" class="w-full outline-none" />
+                  <svg
+                    class="pointer-events-none text-neutral-900"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <circle cx="5" cy="5" r="4.75" stroke="currentColor" stroke-width="0.5" />
+                    <line
+                      x1="9.17678"
+                      y1="9.32322"
+                      x2="13.6768"
+                      y2="13.8232"
+                      stroke="currentColor"
+                      stroke-width="0.5"
+                    />
+                  </svg>
+                </div>
+                <ul id="appliances-list"></ul>
+              </div>
+            </div>
+            <div class="relative min-w-48" data-menu="ustensils">
+              <button
+                class="flex w-full items-center justify-between rounded-lg bg-white p-3 outline-none focus-visible:shadow-[inset_0_0_0_2px_theme('colors.amber.300')]"
+                aria-expanded="false"
+                aria-label="Filtrer les recettes par ustensiles"
               >
-                <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
-              </svg>
-            </button>
+                <span class="pointer-events-none font-medium" aria-hidden="true">Ustensiles</span>
+                <svg
+                  class="pointer-events-none text-neutral-900"
+                  width="15"
+                  height="8"
+                  viewBox="0 0 15 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M1 1L7.5 7L14 1" stroke="currentColor" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full z-10 max-h-60 w-full overflow-auto rounded-b-lg bg-white" hidden>
+                <div
+                  class="ring-accent mx-4 my-1 flex items-center border border-neutral-400 px-2 py-1 focus-within:ring-2 focus-within:ring-amber-300"
+                >
+                  <label class="sr-only" for="ustensil_search">Rechercher un ustensile</label>
+                  <input id="ustensil_search" type="search" class="w-full outline-none" />
+                  <svg
+                    class="pointer-events-none text-neutral-900"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <circle cx="5" cy="5" r="4.75" stroke="currentColor" stroke-width="0.5" />
+                    <line
+                      x1="9.17678"
+                      y1="9.32322"
+                      x2="13.6768"
+                      y2="13.8232"
+                      stroke="currentColor"
+                      stroke-width="0.5"
+                    />
+                  </svg>
+                </div>
+                <ul id="ustensils-list"></ul>
+              </div>
+            </div>
           </div>
+          <div id="recipes-counter" class="min-w-32 flex-grow text-right font-display text-xl">0 recette</div>
         </div>
-        <div id="recipes-counter" class="min-w-32 flex-grow text-right font-display text-xl">0 recette</div>
       </aside>
 
       <section id="recipe-list" class="container m-auto my-12 max-w-screen-xl px-4 xl:px-0"></section>

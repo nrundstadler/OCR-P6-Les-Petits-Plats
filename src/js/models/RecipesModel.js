@@ -39,4 +39,26 @@ export class RecipesModel {
   isInIngredients(recipe, query) {
     return recipe.ingredients.some((item) => item.ingredient.toLowerCase().includes(query));
   }
+
+  // Retrieves unique filter options for ingredients, appliances, and ustensils
+  // by iterating over all recipes and extracting the data
+  getTags() {
+    const tags = {
+      ingredients: new Set(),
+      appliances: new Set(),
+      ustensils: new Set(),
+    };
+
+    this.filteredRecipes.forEach((recipe) => {
+      recipe.ingredients.forEach((ingredient) => tags.ingredients.add(ingredient.ingredient.toLowerCase()));
+      tags.appliances.add(recipe.appliance.toLowerCase());
+      recipe.ustensils.forEach((ustensil) => tags.ustensils.add(ustensil.toLowerCase()));
+    });
+
+    return {
+      ingredients: [...tags.ingredients].sort((a, b) => a.localeCompare(b)),
+      appliances: [...tags.appliances].sort((a, b) => a.localeCompare(b)),
+      ustensils: [...tags.ustensils].sort((a, b) => a.localeCompare(b)),
+    };
+  }
 }
