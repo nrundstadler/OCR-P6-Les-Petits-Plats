@@ -2,6 +2,8 @@
 
 7ème projet de la formation "Développeur d'application JavaScript React" d'OpenClassrooms.
 
+![Screenshot](screenshot.jpg)
+
 ## Solution proposée
 
 La version live de ce projet est disponible sur [Github Pages](https://nrundstadler.github.io/OCR-P7-Les-Petits-Plats/src/).
