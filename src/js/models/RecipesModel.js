@@ -2,14 +2,19 @@ export class RecipesModel {
   constructor(recipes) {
     this.recipes = recipes; // Initial list of all recipes
     this.filteredRecipes = recipes; // List of filtered recipes, initially equal to all recipes
+
+    // Object containing sets of selected tags for filtering recipes (tags with encodeURIComponent)
+    this.tagsSelected = { ingredients: new Set(), appliances: new Set(), ustensils: new Set() };
+
+    this.query = "";
   }
 
-  searchRecipes(query) {
-    query = this.cleanQuery(query);
+  searchRecipes() {
+    const query = this.cleanQuery(this.query);
 
-    // If query is less than 3 characters, show all recipes
+    // Step 1: Filter recipes based on the search query
     if (query.length < 3) {
-      this.filteredRecipes = this.recipes;
+      this.filteredRecipes = this.recipes; // Show all recipes if query is too short
     } else {
       this.filteredRecipes = this.recipes.filter((recipe) => {
         return (
@@ -17,6 +22,12 @@ export class RecipesModel {
         );
       });
     }
+
+    // Step 2: Filter recipes based on selected tags
+    this.filteredRecipes = this.filteredRecipes.filter((recipe) => {
+      // Check if the recipe matches all selected tags
+      return this.matchTags(recipe);
+    });
   }
 
   // Clean the query
@@ -40,6 +51,38 @@ export class RecipesModel {
     return recipe.ingredients.some((item) => item.ingredient.toLowerCase().includes(query));
   }
 
+  matchTags(recipe) {
+    // Check ingredients
+    if (
+      this.tagsSelected.ingredients.size > 0 &&
+      ![...this.tagsSelected.ingredients].every((tag) =>
+        recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase() === decodeURIComponent(tag)),
+      )
+    ) {
+      return false;
+    }
+
+    // Check appliances
+    if (
+      this.tagsSelected.appliances.size > 0 &&
+      ![...this.tagsSelected.appliances].every((tag) => recipe.appliance.toLowerCase() === decodeURIComponent(tag))
+    ) {
+      return false;
+    }
+
+    // Check ustensils
+    if (
+      this.tagsSelected.ustensils.size > 0 &&
+      ![...this.tagsSelected.ustensils].every((tag) =>
+        recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === decodeURIComponent(tag)),
+      )
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
   // Retrieves unique filter options for ingredients, appliances, and ustensils
   // by iterating over all recipes and extracting the data
   getTags() {
@@ -50,9 +93,24 @@ export class RecipesModel {
     };
 
     this.filteredRecipes.forEach((recipe) => {
-      recipe.ingredients.forEach((ingredient) => tags.ingredients.add(ingredient.ingredient.toLowerCase()));
-      tags.appliances.add(recipe.appliance.toLowerCase());
-      recipe.ustensils.forEach((ustensil) => tags.ustensils.add(ustensil.toLowerCase()));
+      recipe.ingredients.forEach((ingredient) => {
+        const ingredientName = ingredient.ingredient.toLowerCase();
+        if (!this.tagsSelected.ingredients.has(encodeURIComponent(ingredientName))) {
+          tags.ingredients.add(ingredientName);
+        }
+      });
+
+      const applianceName = recipe.appliance.toLowerCase();
+      if (!this.tagsSelected.appliances.has(encodeURIComponent(applianceName))) {
+        tags.appliances.add(applianceName);
+      }
+
+      recipe.ustensils.forEach((ustensil) => {
+        const ustensilName = ustensil.toLowerCase();
+        if (!this.tagsSelected.ustensils.has(encodeURIComponent(ustensilName))) {
+          tags.ustensils.add(ustensilName);
+        }
+      });
     });
 
     return {
@@ -60,5 +118,20 @@ export class RecipesModel {
       appliances: [...tags.appliances].sort((a, b) => a.localeCompare(b)),
       ustensils: [...tags.ustensils].sort((a, b) => a.localeCompare(b)),
     };
+  }
+
+  addOrRemoveTagSelected(tagType, tagValue, action) {
+    // Check if the tag type is valid
+    if (!this.tagsSelected[tagType]) {
+      console.error(`Invalid tag type: ${tagType}`);
+      return;
+    }
+
+    // Add the tag to the corresponding Set
+    if (action === "add") {
+      this.tagsSelected[tagType].add(tagValue);
+    } else if (action === "remove") {
+      this.tagsSelected[tagType].delete(tagValue);
+    }
   }
 }
