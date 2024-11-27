@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch"
+    "start": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify"
   },
   "keywords": [],
   "author": "Nicolas Rundstadler",
