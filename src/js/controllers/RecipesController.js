@@ -93,7 +93,7 @@ export class RecipesController {
       dropdown.removeAttribute("hidden");
       button.classList.replace("rounded-lg", "rounded-t-lg");
     } else {
-      dropdown.setAttribute("hidden", true);
+      dropdown.setAttribute("hidden", "");
       button.classList.replace("rounded-t-lg", "rounded-lg");
     }
   }
