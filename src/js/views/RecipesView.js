@@ -7,14 +7,17 @@ export class RecipesView {
   // Renders the list of recipes
   renderRecipes(recipes) {
     if (recipes.length === 0) {
-      this.$recipeListContainer.innerHTML =
-        "<p>Aucune recette ne correspond à votre critère... Vous pouvez chercher 'tarte aux pommes', 'poisson', etc...</p>";
+      this.$recipeListContainer.innerHTML = `
+        <h2 class="sr-only">Liste des recettes</h2>
+        <p>Aucune recette ne correspond à votre critère... Vous pouvez chercher 'tarte aux pommes', 'poisson', etc...</p>
+      `;
       return;
     }
 
     const recipeItems = recipes.map((recipe) => this.createRecipeHTML(recipe)).join("");
 
     this.$recipeListContainer.innerHTML = `
+      <h2 class="sr-only">Liste des recettes</h2>
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-16">
         ${recipeItems}
       </div>
@@ -32,18 +35,18 @@ export class RecipesView {
       <article class="relative rounded-lg bg-white text-sm shadow-lg" aria-label="Recette : ${recipe.name}">
       ${this.createRecipeImageHTML(recipe.image, recipe.name)}
         <div class="mx-4 px-5 py-8">
-          <h2 class="font-display text-lg">${recipe.name}</h2>
+          <h3 class="font-display text-lg">${recipe.name}</h2>
           <p
-            class="absolute right-4 top-4 rounded-full bg-amber-300 px-4 py-2 text-xs"
-            aria-label="Temps de préparation : ${recipe.time} minutes"
+            class="absolute right-4 top-4 rounded-full bg-amber-300 px-4 py-2 text-xs" aria-hidden="true"
           >
           ${recipe.time}min
           </p>
-          <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Recette</h3>
+          <span class="sr-only">Temps de préparation : ${recipe.time} minutes</span>
+          <h4 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Recette</h3>
           <p class="text-sm line-clamp-4">
             ${recipe.description}
           </p>
-          <h3 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Ingrédients</h3>
+          <h4 class="mb-4 mt-8 text-xs font-bold uppercase tracking-widest text-neutral-500">Ingrédients</h3>
           <ul class="grid grid-cols-2 gap-4">
             ${this.createIngredientsHTML(recipe.ingredients)}
           </ul>
